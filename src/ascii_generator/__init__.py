@@ -6,6 +6,8 @@ from enum import Enum
 import requests
 from PIL import Image
 
+sys.path.append(os.path.dirname(__file__))
+
 import logger
 
 logger.set_logger_level(logger.logging.DEBUG)
