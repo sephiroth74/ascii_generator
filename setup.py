@@ -30,7 +30,7 @@ setup(
     license="MIT",
     py_modules=["_ascii_generator_version"],
     ext_modules=ext_modules,
-    packages=["ascii_generator", "libs"],    
+    packages=["ascii_generator", "ascii_generator/libs"],    
     package_dir={"": "src"},
     python_requires=">=3.6",
     zip_safe=False,
