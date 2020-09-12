@@ -6,7 +6,7 @@ from enum import Enum
 import requests
 from PIL import Image
 
-from libs import logger
+import logger
 
 logger.set_logger_level(logger.logging.DEBUG)
 
