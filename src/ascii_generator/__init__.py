@@ -10,11 +10,8 @@ sys.path.append(os.path.dirname(__file__))
 
 import logger
 
-logger.set_logger_level(logger.logging.DEBUG)
-
 IMAGE_RATIO = 0.55
-DEFAULT_CHAR = "▓"
-
+DEFAULT_CHAR = "@"
 
 class ImageFormat(Enum):
     BW = "1"
@@ -36,13 +33,13 @@ class ConsoleColors:
 def process(arguments):
     image = fetch_image(arguments.source)
 
-    logger.info("Image Size:   %sx%s", image.size[0], image.size[1])
-    logger.info("Image Mode:   %s", image.mode)
-    logger.info("Image Format: %s", image.format)
+    logger.debug("Image Size:   %sx%s", image.size[0], image.size[1])
+    logger.debug("Image Mode:   %s", image.mode)
+    logger.debug("Image Format: %s", image.format)
 
     image = resize_image(image, arguments.width)
 
-    logger.info("New Image Size: %sx%s", image.size[0], image.size[1])
+    logger.debug("New Image Size: %sx%s", image.size[0], image.size[1])
     image = convert_image(image, arguments.colors)
 
     file_buffer = print_image(image, arguments)
@@ -148,6 +145,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("source")
     parser.add_argument("--width", type=int, default=120, help=("Image width"))
+    parser.add_argument("--verbose", action="store_true")
+    
     parser.add_argument(
         "--colors",
         type=ImageFormat,
@@ -155,14 +154,17 @@ def main():
         help=("Color Space. Default is RGB"),
         choices=list(ImageFormat),
     )
+    
     parser.add_argument(
         "--background",
         help=("If True, use background color instead of foreground"),
         action="store_true",
     )
+    
     parser.add_argument(
         "--output", type=str, default=None, help=("Save the ASCII Image to file")
     )
+
     parser.add_argument(
         "--char",
         type=str,
@@ -172,12 +174,17 @@ def main():
 
     args = parser.parse_args()
 
-    logger.info("Source:     %s", args.source)
-    logger.info("Width:      %s", args.width)
-    logger.info("Colors:     %s", args.colors)
-    logger.info("Background: %s", args.background)
-    logger.info("Output:     %s", args.output)
-    logger.info("Char:       %s", args.char)
+    if args.verbose:
+        logger.set_logger_level(logger.logging.DEBUG)
+    else:
+        logger.set_logger_level(logger.logging.INFO)
+
+    logger.debug("Source:     %s", args.source)
+    logger.debug("Width:      %s", args.width)
+    logger.debug("Colors:     %s", args.colors)
+    logger.debug("Background: %s", args.background)
+    logger.debug("Output:     %s", args.output)
+    logger.debug("Char:       %s", args.char)
 
     try:
         process(args)
