@@ -24,4 +24,4 @@ This code:
 
 will generate an output like this:
 
-(./art/screenshot-1.png)
+![Screenshot-1](./art/screenshot-1.png)
