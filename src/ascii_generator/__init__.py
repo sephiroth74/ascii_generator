@@ -142,10 +142,7 @@ def save_image(file_buffer, output):
         f.write(file_buffer)
 
 
-"""
-Entry Method
-"""
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("source")
     parser.add_argument("--width", type=int, default=120, help=("Image width"))
@@ -185,4 +182,11 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(e)
 
-    sys.exit(0)
+    sys.exit(0)    
+
+"""
+Entry Method
+"""
+if __name__ == "__main__":
+    main()
+
