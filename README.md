@@ -16,7 +16,7 @@ Exmaple:
 
 use `ascii_generator --help` to see all optional arguments
 
-# Full example
+### Full example
 
 This code:
 
