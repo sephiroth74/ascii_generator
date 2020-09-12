@@ -15,3 +15,13 @@ Exmaple:
 
 
 use `ascii_generator --help` to see all optional arguments
+
+# Full example
+
+This code:
+
+    pipx run --spec git+https://github.com/sephiroth74/ascii_generator.git ascii_generator https://bit.ly/2FoTtNL --width=60 --char=@ --colors=RGB --output=ascii_image.png
+
+will generate an output like this:
+
+(./art/screenshot-1.png)
