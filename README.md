@@ -11,7 +11,11 @@ https://pipxproject.github.io/pipx/
 
 Exmaple:
 
-    pipx run --spec git+https://github.com/sephiroth74/ascii_generator.git ascii_generator https://bit.ly/2FoTtNL
+    pipx install git+https://github.com/sephiroth74/ascii_generator.git
+    
+Now `ascii_generator` is available as regular command line script, and can be used like this:
+
+    ascii_generator https://bit.ly/2FoTtNL
 
 
 use `ascii_generator --help` to see all optional arguments
