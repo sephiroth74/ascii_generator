@@ -80,7 +80,7 @@ def resize_image(image, new_width):
 def fetch_image(source):
     logger.debug("Fetching %s...", source)
     img = None
-    if source.startswith("http") or source.startsidth("https"):
+    if source.startswith("http") or source.startswith("https"):
         req = requests.get(source, stream=True)
         req.raw.decode_content = True
         img = Image.open(req.raw)
